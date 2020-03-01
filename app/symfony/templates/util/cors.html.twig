@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Cors Check</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body onLoad='main();'>
+
+    </body>
+
+    <script>
+      function main()
+      {
+          console.log("main function");
+          console.log("ajax request to the resource which will require cors enabled");
+          $.ajax
+          ({
+              dataType: "json",
+              url: "https://api.github.com",
+              success: function(data)
+              {
+                  console.log("log response on success");
+                  console.log(data);
+              }
+          });
+      }
+    </script>
+
+</html>

@@ -9,10 +9,12 @@ RUN apt-get update -y && \
             ca-certificates \
             vim \
             git \
+            apt-utils \
             nano
 
 ## Apache
 RUN a2enmod ssl rewrite
+RUN a2enmod headers
 
 ## PHP
 RUN apt-get update && apt-get install -y \
