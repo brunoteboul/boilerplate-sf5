@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\User;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -31,7 +30,7 @@ final class SecurityController extends AbstractController
      */
     public function loginAction(): JsonResponse
     {
-        /** @var User $user */
+        // @var User $user
         $user = $this->getUser();
         $userClone = clone $user;
         $userClone->setPassword('');

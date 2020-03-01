@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Traits\BaseDateAtTrait;
@@ -13,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
+    use BaseDateAtTrait;
+
     // START STATUS
     const USER_STATUS_OFFLINE = 1;
     const USER_STATUS_ONLINE_NOT_CONFIRMED = 2;
@@ -36,9 +40,6 @@ class User implements UserInterface
         self::CIVILITY_MISSIS => 'user.civility.missis',
         self::CIVILITY_MISTER => 'user.civility.mister',
     ];
-
-    // Dates for the entity.
-    use BaseDateAtTrait;
 
     /**
      * @ORM\Id()
@@ -145,7 +146,7 @@ class User implements UserInterface
     public function hasAnyRole(...$roles): bool
     {
         foreach ($roles as $role) {
-            if (!$this->hasRole($role)) {
+            if (! $this->hasRole($role)) {
                 continue;
             }
 
@@ -280,7 +281,7 @@ class User implements UserInterface
      */
     public function getStatusName(): string
     {
-        return !empty(self::USER_STATUSES[$this->status]) ? self::USER_STATUSES[$this->status] : '';
+        return ! empty(self::USER_STATUSES[$this->status]) ? self::USER_STATUSES[$this->status] : '';
     }
 
     /**

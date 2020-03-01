@@ -6,6 +6,7 @@ namespace App\Command;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -74,7 +75,7 @@ class CreateUserCommand extends Command
             $question = new Question('Please choose a password:');
             $question->setValidator(static function ($password) {
                 if (empty($password)) {
-                    throw new \Exception('Password can not be empty');
+                    throw new Exception('Password can not be empty');
                 }
 
                 return $password;

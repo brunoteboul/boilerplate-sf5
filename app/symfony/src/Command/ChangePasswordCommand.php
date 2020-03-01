@@ -6,6 +6,7 @@ namespace App\Command;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -46,7 +47,7 @@ class ChangePasswordCommand extends Command
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
 
         if (! $email) {
-            throw new \Exception('Unable to find a matching User for given e-mail address');
+            throw new Exception('Unable to find a matching User for given e-mail address');
         }
 
         $password = $this->passwordEncoder->encodePassword($user, $input->getArgument('password'));
@@ -69,7 +70,7 @@ class ChangePasswordCommand extends Command
             $question = new Question('Please enter new password:');
             $question->setValidator(static function ($password) {
                 if (empty($password)) {
-                    throw new \Exception('Password can not be empty');
+                    throw new Exception('Password can not be empty');
                 }
 
                 return $password;
