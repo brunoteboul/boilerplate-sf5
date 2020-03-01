@@ -12,6 +12,7 @@ services:
       - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini
       - ./docker/etc/php/php-cli.ini:/usr/local/etc/php/php-cli.ini
       - ./app/symfony:/var/www/symfony
+      - app-vendor:/var/www/symfony/vendor
     environment:
       DATABASE_URL: mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST:$MYSQL_PORT/$MYSQL_DATABASE
 
@@ -20,6 +21,7 @@ services:
     image: mysql:5.7
     volumes:
       - ./docker/etc/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - mysql-data:/var/lib/mysql/
       - ./data:/data
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
@@ -38,3 +40,7 @@ services:
     image: mailhog/mailhog:latest
     depends_on:
       - apache
+
+volumes:
+  app-vendor:
+  mysql-data:
