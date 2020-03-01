@@ -7,11 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="description" content="{{ 'app.description'|trans }}">
         {{ encore_entry_link_tags('main') }}
-        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
         {{ encore_entry_script_tags('app') }}
-        {% block javascripts %}{% endblock %}
     </body>
 </html>
