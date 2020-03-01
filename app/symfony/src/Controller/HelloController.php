@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,10 +13,8 @@ class HelloController extends AbstractController
     /**
      * @Route("/", name="hello")
      */
-    public function index()
+    public function index(): ?Response
     {
-        // votre url http://127.0.0.1:8000/
-
         return $this->render('/hello.html.twig');
     }
 }
