@@ -7,26 +7,49 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
-    <body onLoad='main();'>
+    <body onLoad='benchCors();'>
+
+      <h3>Test CORS github request</h3>
+      <div id="bench-github"></div>
+
+      <h3>Test CORS localhost request</h3>
+      <div id="bench-localhost"></div>
 
     </body>
 
     <script>
-      function main()
-      {
-          console.log("main function");
-          console.log("ajax request to the resource which will require cors enabled");
-          $.ajax
-          ({
-              dataType: "json",
-              url: "https://api.github.com",
-              success: function(data)
-              {
-                  console.log("log response on success");
-                  console.log(data);
-              }
-          });
-      }
+      const benchGithubCors = () => {
+        $('#bench-github').html("Start github api request");
+        $.ajax
+        ({
+          dataType: "json",
+          url: "https://api.github.com",
+          success: function(data)
+          {
+            $('#bench-github').html();
+            $('#bench-github').html("response success");
+          }
+        });
+      };
+
+      const benchLocalhostCors = () => {
+        $('#bench-localhost').html("Start local request");
+        $.ajax
+        ({
+          dataType: "json",
+          url: "/cors/request/",
+          success: function(data)
+          {
+            $('#bench-localhost').html("response success");
+          }
+        });
+      };
+
+      const benchCors = () => {
+        benchGithubCors();
+        benchLocalhostCors();
+      };
+
     </script>
 
 </html>
