@@ -14,7 +14,7 @@ class CorsController extends AbstractController
     /**
      * @Route("/cors/", name="cors_check")
      */
-    public function index(): ?Response
+    public function index(): Response
     {
         return $this->render('/util/cors.html.twig');
     }
