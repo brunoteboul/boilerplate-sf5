@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  nono was here!<br>
-  so was brook...
+  <div id="app" data-is-authenticated="{{ isAuthenticated }}" data-user="{{ user }}"></div>
 {% endblock %}

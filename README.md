@@ -29,11 +29,20 @@ Surcharge de la configuration Docker :
 cp docker-compose.override.yml.dist docker-compose.override.yml
 ```
 
-Modification de la configuration d'envionnement : 
+Modification de la configuration d'environnement : 
 
 ```
 cp .env.dist .env
 ```
+
+### Project commands
+---
+* Install NPM and build assets (dev) : `make build-dev`
+* Install NPM and build assets (prod) : `make build-prod`
+* Yarn watch dev : `make yarn-watch`
+* Yarn build (dev) : `make yarn-dev`
+* Yarn build (prod) : `make yarn-prod`
+* Clean .DS_Store : `make ds-store`
 
 ### Docker-compose commands
 ---

@@ -15,7 +15,9 @@ Encore
     //.setManifestKeyPrefix('build/')
 
     // Each entry will result in one JavaScript file (e.g. app.js)
-    .addEntry('app', './assets/js/app.js')
+    // .addEntry('app', './assets/js/app.js')
+    .addEntry('app', './assets/vue/index.js')
+
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -53,6 +55,9 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
+
+    // vue specific extension loader
+    .enableVueLoader()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
