@@ -1,0 +1,67 @@
+// COLOURS
+$light-blue:    #8798ad;
+$light-blue-10: #9FACBD;
+$light-blue-10: #9FACBD;
+$blue:          #273c75;
+$midnight-blue: #668bfa;
+$dark-grey:     #333;
+$grey:          #f4f4f5;
+$grey-10:       #e9e9eb;
+$grey-20:       #c3cbd6;
+$grey-30:       #fcfcfd;
+$grey-40:       #b6b6bd;
+// --
+$grey-20-i:       #808080;
+$grey-50:       #f9f9f9;
+// --
+$red:           #ff6173;
+$red-10:        #ff5e45;
+$red-20:        #FF7E6A;
+$orange:        #fa8e4f;
+$green:         #21bf73;
+$yellow:        #f7c137;
+$turquoise:     #14c5d7;
+$turquoise-10:  #43D0DF;
+$white:         #fff;
+$black:         #000;
+$purple:        #27283c;
+$purple-10:     #3c3d4f;
+$purple-20:     #525363;
+$purple-30:     #3D3D4F;
+
+$primary:     $turquoise;
+$secondary:   $purple;
+$tertiary:    $light-blue;
+
+$success:    $green;
+$info:       $primary;
+$warning:    $yellow;
+$danger:     $red;
+
+// Complement
+$border-color:    #d8d7d5;
+$text-color:      $purple;
+$body-color:      $purple;
+$input-color:     $white;
+
+// SIZES
+$btn-height: 50px;
+$input-height: 50px;
+$input-height-lg: 60px;
+
+// BREAK-POINTS
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 1024px,
+  lg: 1280px,
+  xl: 1700px
+) !default;
+
+// Container
+$container-max-widths: (
+  sm: 1180px,
+  md: 1190px,
+  lg: 1200px,
+  xl: 1210px
+) !default;

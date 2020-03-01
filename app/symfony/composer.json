@@ -23,7 +23,7 @@
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
-        "symfony/webpack-encore-bundle": "*",
+        "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "*"
     },
     "require-dev": {
