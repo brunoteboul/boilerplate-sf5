@@ -58,6 +58,4 @@ cp .env.dist .env
 
 ### Authors / Maintainers
 ---
-
-- Sofiane Souidi
-- Jérôme Drzewinski
+- nono
