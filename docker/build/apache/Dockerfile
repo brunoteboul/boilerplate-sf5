@@ -40,7 +40,7 @@ RUN apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
 RUN echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-      build-essential libpq-dev curl
+      build-essential libpq-dev
       
 # Yarn
 RUN apt-get update && apt-get install -qq -y --no-install-recommends nodejs yarn
