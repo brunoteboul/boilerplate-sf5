@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+
+  # Apache
+  apache:
+    build: ./docker/build/apache
+    depends_on:
+      - mysql
+    volumes:
+      - ./docker/etc/apache/virtualhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+      - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/etc/php/php-cli.ini:/usr/local/etc/php/php-cli.ini
+      - ./app/symfony:/var/www/symfony
+    environment:
+      DATABASE_URL: mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST:$MYSQL_PORT/$MYSQL_DATABASE
+
+  # MySQL
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/etc/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./data:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: nazarpc/phpmyadmin
+    depends_on:
+      - mysql
+
+  # Mailhog
+  mailhog:
+    image: mailhog/mailhog:latest
+    depends_on:
+      - apache
