@@ -118,9 +118,6 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -130,6 +127,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param Array $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -141,7 +141,6 @@ class User implements UserInterface
      * Check that user has any of the role provided.
      *
      * @param mixed ...$roles
-     * @return bool
      */
     public function hasAnyRole(...$roles): bool
     {
@@ -156,9 +155,6 @@ class User implements UserInterface
         return false;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getPassword(): string
     {
         return (string) $this->password;
@@ -185,17 +181,13 @@ class User implements UserInterface
         $this->password = null;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     /**
-     * @param string $firstName
-     * @return $this
+     * @return User $this
      */
     public function setFirstName(string $firstName): self
     {
@@ -204,17 +196,13 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     /**
-     * @param string $lastName
-     * @return $this
+     * @return User $this
      */
     public function setLastName(string $lastName): self
     {
@@ -223,33 +211,23 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFullName(): ?string
     {
-        return ($this->lastName || $this->firstName) ? $this->lastName . ' ' . $this->firstName : '';
+        return $this->lastName || $this->firstName ? $this->lastName . ' ' . $this->firstName : '';
     }
 
-    /**
-     * @return string|null
-     */
     public function getFullNameWithCivility(): ?string
     {
         return $this->getCivilityName() . ' ' . $this->getFullName();
     }
 
-    /**
-     * @return int|null
-     */
     public function getCivility(): ?int
     {
         return $this->civility;
     }
 
     /**
-     * @param int $civility
-     * @return $this
+     * @return User $this
      */
     public function setCivility(int $civility): self
     {
@@ -258,35 +236,23 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * Provide the name of civility bases on key value.
-     *
-     * @return string
-     */
     public function getCivilityName(): string
     {
         return self::CIVILITY_LIST[$this->civility] ?? '';
     }
 
-    /**
-     * @return int|null
-     */
     public function getStatus(): ?int
     {
         return $this->status;
     }
 
-    /**
-     * @return string
-     */
     public function getStatusName(): string
     {
         return ! empty(self::USER_STATUSES[$this->status]) ? self::USER_STATUSES[$this->status] : '';
     }
 
     /**
-     * @param int $status
-     * @return $this
+     * @return User $this
      */
     public function setStatus(int $status): self
     {
@@ -298,7 +264,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getSalt()
+    public function getSalt(): void
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
@@ -306,7 +272,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
